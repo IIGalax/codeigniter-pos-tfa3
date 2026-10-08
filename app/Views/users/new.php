@@ -70,6 +70,11 @@
 
         <br><br>
 
+        <label for="password">Password (min 8 characters):</label><br>
+        <input type="password" id="password" name="password">
+
+        <br><br>
+
         <button type="submit">Save User</button>
     </form>
 

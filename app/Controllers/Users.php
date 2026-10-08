@@ -29,7 +29,8 @@ class Users extends BaseController
         $rules = [
             'username'  => 'required|is_unique[users.username]',
             'full_name' => 'required',
-            'email'     => 'permit_empty|valid_email'
+            'email'     => 'permit_empty|valid_email',
+            'password'  => 'required|min_length[8]'
         ];
 
         if (!$this->validate($rules)) {
@@ -39,7 +40,8 @@ class Users extends BaseController
         $data = [
             'username'  => $this->request->getPost('username'),
             'full_name' => $this->request->getPost('full_name'),
-            'email'     => $this->request->getPost('email')
+            'email'     => $this->request->getPost('email'),
+            'password'  => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
         ];
 
         $model->insert($data);
